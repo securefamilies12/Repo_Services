@@ -1,5 +1,6 @@
 const dbConnection = require("../config/dbConfig");
 const Sequelize = require("sequelize");
+
 const EmployeeSchema = dbConnection.define(
   "employee",
   {

@@ -1,5 +1,29 @@
 const employeeSchema = require("../../modals/employee");
 
+// class CreateEmployee {
+//   async createEmployeeData(data) {
+//     try {
+//       const createEmployee = new employeeSchema({
+//         first_name: data?.first_name,
+//         last_name: data?.last_name,
+//         mobile: data?.mobile_number,
+//         designation: data?.designation,
+//       });
+  
+//       await createEmployee.save();
+//       return "Employee created successfully.";
+//     } catch (e) {
+//       let error = "";
+//       if (e?.original?.sqlMessage) {
+//         error = e.original.sqlMessage;
+//       }
+  
+//       error = e?.message || e;
+//       return error;
+//     }
+//   }
+// }
+
 async function createEmployeeData(data) {
   try {
     const createEmployee = new employeeSchema({
@@ -93,6 +117,8 @@ async function deleteEmployeeData(first_name) {
     return { status: false, message: error };
   }
 }
+
+// const createEmployee = new CreateEmployee;
 
 module.exports = {
   createEmployeeData,

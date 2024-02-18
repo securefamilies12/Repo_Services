@@ -33,6 +33,7 @@ app.get("/get_employee", async (req, res) => {
 });
 
 // array () => {}
+// app.use("/admin", router);
 app.post("/create_employee", async (req, res) => {
   const data = req.body;
 
