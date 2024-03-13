@@ -8,6 +8,7 @@
     "start": "npx babel-node src/index.js",
     "dev": "nodemon --exec babel-node src/index.js"
   },
+  
   "author": "Testsof",
   "license": "ISC",
   "dependencies": {
