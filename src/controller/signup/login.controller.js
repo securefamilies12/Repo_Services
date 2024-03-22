@@ -8,16 +8,13 @@ export const login = async (req, res) => {
     const { user_name, user_pass } = req.body;
     const userData = await Users.findOne({
       where: {
-        [Op.or]: {
-          user_email: user_name,
-        },
+        user_email: user_name,
         user_pass: md5(user_pass),
         user_verify: 1,
         cp_status: 0,
       },
     });
 
-    
     if (!userData) {
       return res.status(200).json({
         status: 200,
@@ -55,7 +52,7 @@ export const login = async (req, res) => {
 
     return res.json({
       success: true,
-      data: { token, refreshToken, user: userData?.dataValues || [] },
+      data: { token, refreshToken, user: userData?.dataValues || {} },
       message: "",
     });
   } catch (e) {

@@ -1,16 +1,18 @@
 const crypto = require("crypto");
 const fs = require("fs");
+const { customAlphabet, urlAlphabet } = require("nanoid");
+
 const privateKey = crypto.createPrivateKey(
   fs.readFileSync(__dirname + "/keys/private.pem")
 );
 
 const publicKey = fs.readFileSync(__dirname + "/keys/public.pem");
 
-// const publicKeyObj = crypto.createPublicKey({
-//   key: publicKey,
-//   format: 'pem',
-//   type: 'spki'
-// });
+const publicKeyObj = crypto.createPublicKey({
+  key: publicKey,
+  format: 'pem',
+  type: 'spki'
+});
 
 // crypto-js
 
@@ -39,6 +41,17 @@ export const dataDecription = async (encrpteddata) => {
   }
 };
 
-// export function encryptWithPublicKey(text) {
-//   return crypto.publicEncrypt(publicKeyObj, Buffer.from(text)).toString("base64");
-// }
+export function encryptWithPublicKey(text) {
+  return crypto.publicEncrypt(publicKeyObj, Buffer.from(text)).toString("base64");
+}
+
+export const randomId = (size = 12, caps = false) => {
+  if (caps) {
+    const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ", size);
+
+    return nanoid();
+  }
+
+  const nanoid = customAlphabet(urlAlphabet, size);
+  return nanoid();
+};

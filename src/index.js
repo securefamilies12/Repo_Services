@@ -1,8 +1,8 @@
-const express = require("express");
-const http = require("http");
+import express from 'express';
+import http from 'http';
 import "dotenv/config";
 import auth from "./config/auth";
-const cors = require("cors");
+import cors from 'cors';
 const app = express();
 import AllRoutes from "./routes/route";
 import AllSignUpRoutes from "./routes/signup/signup.route";
@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1", AllSignUpRoutes);
 
 // middleware
-app.use(auth.authMiddleWare);
+// app.use(auth.authMiddleWare);
 
 // authenticated routes
 app.use("/api/v1", AllRoutes);

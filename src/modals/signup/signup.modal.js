@@ -40,6 +40,14 @@ const Users = dbConnection.define(
       allowNull: false,
       defaultValue: 0,
     },
+    cp_status: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1,
+    },
+    user_otp: {
+      type: DataTypes.INTEGER,
+    },
     // profile_pic: {
     //   type: DataTypes.STRING(200),
     //   allowNull: false,
